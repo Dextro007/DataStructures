@@ -9,7 +9,7 @@ int money_change(int m){
   return tens+ones+fives;
 }
 
-int main(){
+int main(){a
   int m;
   cin>>m;
   cout<<money_change(m);
