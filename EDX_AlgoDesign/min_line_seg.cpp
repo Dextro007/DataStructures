@@ -14,6 +14,10 @@ DS/algo used : array/vector
 using namespace std;
 
 int main() {
-
+  vector<long> vec;
+  int n= 200;
+  for(int i = 0;i<n; i++){
+    cin>>vec[i];
+  }
   return 0;
 }
