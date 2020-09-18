@@ -18,10 +18,30 @@ SOln: 1. sort the points acc based on 1st coordinate
 #include<vector>
 using namespace std;
 
+int min_number_seg(int n,vector< pair<long, long>> points){
+  long min_coord, max_coord;
+  min_coord = points[0].first;
+  max_coord = points[0].second;
+  int segments = 1;
+  for(int i=1; i<n; i++){
+    if(points[i].first>max_coord){
+      min_coord = points[i].first;
+      max_coord = points[i].second;
+      segments++;
+    }
+    else{
+      max_coord = std::max(max_coord, points[i].second);
+    }
+  }
+  return segments;
+}
+
 int main() {
+  //creating vector of pairs
   vector< pair <long,long>> points;
-  long arr_x1[100], arr_x2[100];
-  int n= 100;
+  long arr_x1[4], arr_x2[4];
+  int n= 4;
+  cout<<"Enter the coordinates: ";
   for(int i = 0;i<n; i++){
     cin>>arr_x1[i]>>arr_x2[i];
   }
@@ -30,6 +50,7 @@ int main() {
   }
   make_heap(points.begin(), points.end());
   sort_heap(points.begin(), points.end());
-  
+  //passing vactor-pairs to function
+  cout<<min_number_seg(n, points);
   return 0;
 }
