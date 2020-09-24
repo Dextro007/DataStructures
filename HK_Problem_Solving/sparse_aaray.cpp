@@ -5,8 +5,8 @@ using namespace std;
 
 int main(){
   string str1 = "ab";
-  string str2 = "ab";
-  if(str1 == str2){
+  char a = 'A';
+  if(str1 == string(1, a)){
     cout<<"Same \n";
   }
   else{
