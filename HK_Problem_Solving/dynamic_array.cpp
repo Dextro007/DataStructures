@@ -21,7 +21,7 @@ vector<int> dynamicArray(int n, vector<vector<int>> queries) {
      long seq,x,y;
      int query_size = queries.size();
      int query,idx,lastAnswer = 0;
-     
+
      for(int i= 0; i<query_size; i++){
        query = queries.at(i).at(0);
        x = queries.at(i).at(1);
