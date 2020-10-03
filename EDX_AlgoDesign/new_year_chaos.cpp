@@ -32,7 +32,7 @@ void calculate_chaos(vector<int> queue){
   cout<<count<<"\n";
 
 }
-
+rr
 int main(){
   int test_cases;
   int n, element;
