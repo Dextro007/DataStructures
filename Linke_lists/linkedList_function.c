@@ -9,6 +9,14 @@ struct Node{
 };
 struct Node* head;
 
+// to check whether the list is empty
+unsigned char isEmpty(){
+  if(head == NULL)
+    return 1;
+  else
+    return 0;
+}
+// to insert data at the beginning of the list
 void insert_at_beginning(int number){
   struct Node* temp = (Node*)malloc(sizeof(struct Node));
   temp->data = number;
@@ -21,6 +29,15 @@ void insert_at_beginning(int number){
     head = temp;
   return;
 }
+
+// to insert data at the nth position
+void insert_at_n(int n, int data){
+  struct Node* temp = (Node*)malloc(sizeof(struct Node));
+  if(n==0 || n==1){
+    insert_at_beginning(data);
+  }
+}
+//print the elements of list
 void print_list(){
   struct Node* temp = (Node*)malloc(sizeof(struct Node));
   temp->link = head;
@@ -37,10 +54,10 @@ int main(){
     head = NULL;
     printf("Enter number of insertion: ");
     scanf("%d", &n);
-     for( i=0; i<n; i++){
-       printf("enter the value to be inserted :");
-       scanf("%d", &number);
-       insert_at_beginning(number);
+    for( i=0; i<n; i++){
+      printf("enter the value to be inserted :");
+      scanf("%d", &number);
+      insert_at_beginning(number);
      }
      return 0;
 }
