@@ -20,22 +20,31 @@ unsigned char isEmpty(){
 void insert_at_beginning(int number){
   struct Node* temp = (Node*)malloc(sizeof(struct Node));
   temp->data = number;
-  temp->link = NULL;
-  if(head != NULL){
-    temp->link = head;
-    head = temp;
-  }
-  else
-    head = temp;
+  temp->link = head;
+  head = temp;
   return;
 }
 
 // to insert data at the nth position
 void insert_at_n(int n, int data){
-  struct Node* temp = (Node*)malloc(sizeof(struct Node));
-  if(n==0 || n==1){
+  struct Node* new_node = (Node*)malloc(sizeof(struct Node));
+  if(n==0){
     insert_at_beginning(data);
   }
+  else if(n == 1){
+    new_node->data = data;
+    new_node->link = head;
+    head = new_node;
+  }
+  //traversing through the linked list
+  struct Node* previous_node = head;
+  for(int i=0; i<n-1; i++){
+    previous_node = previous_node->link;
+  }
+  new_node->data = data;
+  new_node->link = previous_node->link;
+  previous_node->link = new_node;
+  return;
 }
 //print the elements of list
 void print_list(){
