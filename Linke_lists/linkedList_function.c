@@ -46,6 +46,23 @@ void insert_at_n(int n, int data){
   previous_node->link = new_node;
   return;
 }
+
+// function to delete node at nth position
+void delete_nth(int n){
+  struct Node* previous_node = (Node*)malloc(sizeof(struct Node));
+  int i;
+  previous_node = head;
+  for(i=0; i<n-2; i++){
+    previous_node  = previous_node->link;
+  }
+  struct Node* current_node = (Node*)malloc(sizeof(struct Node));
+  current_node = previous_node->link;
+  previous_node->link = current_node->link;
+  free(current_node);
+  return;
+}
+
+
 //print the elements of list
 void print_list(){
   struct Node* temp = (Node*)malloc(sizeof(struct Node));
