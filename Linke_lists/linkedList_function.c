@@ -62,7 +62,6 @@ void delete_nth(int n){
   return;
 }
 
-
 //print the elements of list
 void print_list(){
   struct Node* temp = (Node*)malloc(sizeof(struct Node));
@@ -73,6 +72,11 @@ void print_list(){
   }
   printf("\n");
   return;
+}
+
+//reverse the linked list
+void reverse_list(){
+  struct Node *current_node, *previous_node;
 }
 
 int main(){
