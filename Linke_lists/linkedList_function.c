@@ -47,6 +47,25 @@ void insert_at_n(int n, int data){
   return;
 }
 
+// function to insert data at end
+void push(int data){
+  struct Node *current_node = (Node*)malloc(sizeof(struct Node));
+  current_node->data = data;
+  current_node->link = NULL;
+  if(isEmpty()){
+    head = current_node;
+    return;
+  }
+  else{
+    struct Node *previous_node = (Node*)malloc(sizeof(struct Node));
+    while(previous_node->link != NULL){
+      previous_node = previous_node->link;
+    }
+    previous_node->link = current_node;
+  }
+  return;
+}
+
 // function to delete node at nth position
 void delete_nth(int n){
   struct Node* previous_node = (Node*)malloc(sizeof(struct Node));
@@ -82,6 +101,8 @@ void reverse_list(){
 int main(){
     int n,i,number;
     head = NULL;
+
+    /*
     printf("Enter number of insertion: ");
     scanf("%d", &n);
     for( i=0; i<n; i++){
@@ -89,5 +110,7 @@ int main(){
       scanf("%d", &number);
       insert_at_beginning(number);
      }
+     */
+     print_list();
      return 0;
 }
