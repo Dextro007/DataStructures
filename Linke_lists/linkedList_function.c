@@ -97,6 +97,18 @@ void print_list(){
 void reverse_list(){
   struct Node *current_node, *previous_node;
 }
+// funtion to implement pop functionality(deleting at end)
+void pop(){
+  struct Node *current_node, *previous_node = (Node *)malloc(sizeof(struct Node));
+  current_node = head;
+  while(current_node->link != NULL){
+    previous_node->link = current_node;
+    current_node->link = current_node->link;
+  }
+  previous_node->link = NULL;
+  free(current_node);
+  return;
+}
 
 int main(){
     int n,i,number;
