@@ -18,7 +18,7 @@ unsigned char isEmpty(){
 }
 // to insert data at the beginning of the list
 void insert_at_beginning(int number){
-  struct Node* temp = (Node*)malloc(sizeof(struct Node));
+  struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
   temp->data = number;
   temp->link = head;
   head = temp;
@@ -27,7 +27,7 @@ void insert_at_beginning(int number){
 
 // to insert data at the nth position
 void insert_at_n(int n, int data){
-  struct Node* new_node = (Node*)malloc(sizeof(struct Node));
+  struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
   if(n==0){
     insert_at_beginning(data);
   }
@@ -49,7 +49,7 @@ void insert_at_n(int n, int data){
 
 // function to insert data at end
 void push(int data){
-  struct Node *current_node = (Node*)malloc(sizeof(struct Node));
+  struct Node *current_node = (struct Node*)malloc(sizeof(struct Node));
   current_node->data = data;
   current_node->link = NULL;
   if(isEmpty()){
@@ -57,7 +57,7 @@ void push(int data){
     return;
   }
   else{
-    struct Node *previous_node = (Node*)malloc(sizeof(struct Node));
+    struct Node *previous_node = (struct Node*)malloc(sizeof(struct Node));
     while(previous_node->link != NULL){
       previous_node = previous_node->link;
     }
@@ -68,13 +68,13 @@ void push(int data){
 
 // function to delete node at nth position
 void delete_nth(int n){
-  struct Node* previous_node = (Node*)malloc(sizeof(struct Node));
+  struct Node* previous_node = (struct Node*)malloc(sizeof(struct Node));
   int i;
   previous_node = head;
   for(i=0; i<n-2; i++){
     previous_node  = previous_node->link;
   }
-  struct Node* current_node = (Node*)malloc(sizeof(struct Node));
+  struct Node* current_node = (struct Node*)malloc(sizeof(struct Node));
   current_node = previous_node->link;
   previous_node->link = current_node->link;
   free(current_node);
@@ -83,7 +83,7 @@ void delete_nth(int n){
 
 //print the elements of list
 void print_list(){
-  struct Node* temp = (Node*)malloc(sizeof(struct Node));
+  struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
   temp->link = head;
   while(temp->link != NULL){
     printf("%d", temp->data);
@@ -95,11 +95,11 @@ void print_list(){
 
 //reverse the linked list
 void reverse_list(){
-  struct Node *current_node, *previous_node;
+  //struct Node *current_node, *previous_node;
 }
 // funtion to implement pop functionality(deleting at end)
 void pop(){
-  struct Node *current_node, *previous_node = (Node *)malloc(sizeof(struct Node));
+  struct Node *current_node, *previous_node = (struct Node *)malloc(sizeof(struct Node));
   current_node = head;
   while(current_node->link != NULL){
     previous_node->link = current_node;
@@ -113,16 +113,13 @@ void pop(){
 int main(){
     int n,i,number;
     head = NULL;
-
-    /*
     printf("Enter number of insertion: ");
     scanf("%d", &n);
     for( i=0; i<n; i++){
-      printf("enter the value to be inserted :");
+      printf("\n Enter the value to be inserted :");
       scanf("%d", &number);
       insert_at_beginning(number);
      }
-     */
      print_list();
      return 0;
 }
