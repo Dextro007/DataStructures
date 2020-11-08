@@ -9,6 +9,9 @@ struct Node{
 };
 struct Node* head;
 
+// stores length of the list should be modified after each insertion and deletion
+unsigned long listLength = 0;
+
 // to check whether the list is empty
 unsigned char isEmpty(){
   if(head == NULL)
@@ -22,6 +25,7 @@ void insert_at_beginning(int number){
   temp->data = number;
   temp->link = head;
   head = temp;
+  listLength++;
   return;
 }
 
@@ -44,52 +48,65 @@ void insert_at_n(int n, int data){
   new_node->data = data;
   new_node->link = previous_node->link;
   previous_node->link = new_node;
+  listLength++;
   return;
 }
 
 // function to insert data at end
 void push(int data){
-  struct Node *current_node = (struct Node*)malloc(sizeof(struct Node));
-  current_node->data = data;
-  current_node->link = NULL;
+  struct Node *new_node = (struct Node*)malloc(sizeof(struct Node));
+  new_node->data = data;
+  new_node->link = NULL;
+  listLength++;
   if(isEmpty()){
-    head = current_node;
+    head = new_node;
     return;
   }
   else{
     struct Node *previous_node = (struct Node*)malloc(sizeof(struct Node));
+    previous_node = head;
     while(previous_node->link != NULL){
       previous_node = previous_node->link;
     }
-    previous_node->link = current_node;
+    previous_node->link = new_node;
   }
   return;
 }
 
 // function to delete node at nth position
 void delete_nth(int n){
-  struct Node* previous_node = (struct Node*)malloc(sizeof(struct Node));
-  int i;
-  previous_node = head;
-  for(i=0; i<n-2; i++){
-    previous_node  = previous_node->link;
+  // check if the list is empty.
+  if(head == NULL){
+    printf("The list is empty nothing to delete \n");
+    return;
   }
-  struct Node* current_node = (struct Node*)malloc(sizeof(struct Node));
-  current_node = previous_node->link;
-  previous_node->link = current_node->link;
-  free(current_node);
+  else{
+    struct Node* previous_node = (struct Node*)malloc(sizeof(struct Node));
+    int i;
+    previous_node = head;
+    for(i=0; i<n-2; i++){
+      previous_node  = previous_node->link;
+    }
+    struct Node* current_node = (struct Node*)malloc(sizeof(struct Node));
+    current_node = previous_node->link;
+    previous_node->link = current_node->link;
+    free(current_node);
+    listLength--;
+  }
   return;
 }
 
 //print the elements of list
 void print_list(){
   struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
-  temp->link = head;
+  temp = head;
+  int i = 0;
   while(temp->link != NULL){
-    printf("%d", temp->data);
+    printf("Element at %d position is : %d \n", i, temp->data);
     temp = temp->link;
   }
-  printf("\n");
+  printf("Element at %d position is : %d \n", i, temp->data);
+  printf("----------END OF LIST-------------\n");
   return;
 }
 
@@ -113,13 +130,24 @@ void pop(){
 int main(){
     int n,i,number;
     head = NULL;
-    printf("Enter number of insertion: ");
-    scanf("%d", &n);
-    for( i=0; i<n; i++){
-      printf("\n Enter the value to be inserted :");
-      scanf("%d", &number);
-      insert_at_beginning(number);
-     }
+    push(10);
+    push(7);
+    push(5);
+    push(4);
+    push(9);
+    push(3);
+    insert_at_n(3,11);
+    print_list();
+    delete_nth(2);
+    insert_at_beginning(1);
+    // printf("Enter number of insertion: ");
+    // scanf("%d", &n);
+    // for( i=0; i<n; i++){
+    //   printf("\n Enter the value to be inserted :");
+    //   scanf("%d", &number);
+    //   insert_at_beginning(number);
+    //  }
      print_list();
+     printf("length of the Linked list is : %lu\n", listLength);
      return 0;
 }
