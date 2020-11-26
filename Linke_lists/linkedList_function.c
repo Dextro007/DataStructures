@@ -112,7 +112,24 @@ void print_list(){
 
 //reverse the linked list
 void reverse_list(){
-  //struct Node *current_node, *previous_node;
+  if(isEmpty()){
+    printf("List is Empty.");
+    return;
+  }
+  struct Node *next_node = (struct Node*)malloc(sizeof(struct Node));
+  struct Node *current_node = (struct Node*)malloc(sizeof(struct Node));
+  struct Node *previous_node = (struct Node*)malloc(sizeof(struct Node));
+  // struct Node *next = (struct Node*)malloc(sizeof(struct Node));
+  previous_node = NULL;
+  current_node = head;
+  while(current_node->link != NULL){
+    next_node = current_node->link;
+    current_node->link = previous_node;
+    previous_node = current_node;
+    current_node = next_node;
+  }
+  head = previous_node;
+  return;
 }
 // funtion to implement pop functionality(deleting at end)
 void pop(){
