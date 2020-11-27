@@ -143,6 +143,8 @@ void pop(){
   free(current_node);
   return;
 }
+//-------------
+void func(){}
 
 int main(){
     int n,i,number;
