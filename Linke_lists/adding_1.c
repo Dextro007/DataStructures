@@ -1,3 +1,10 @@
+/*
+AIM : add 1 to a linked list storing numbers
+Approach : 1. reverse the linked list for convinience as we
+            start adding from right most
+            2. handle the carry
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -6,9 +13,29 @@ struct Node{
   struct Node *link;
 };
 struct Node *head;
-
+unsigned char isEmpty(){
+  return head == NULL;
+}
 void reverse_list(){
-  
+  if(isEmpty()){
+    printf("The list is empty. \n");
+    return;
+  }
+  struct Node *current_node = (struct Node*)malloc(sizeof(struct Node));
+  struct Node *previous_node = (struct Node*)malloc(sizeof(struct Node));
+  struct Node *next_node = (struct Node*)malloc(sizeof(struct Node));
+  previous_node = NULL;
+  current_node = head;
+  while(current_node->link != NULL){
+    next_node = current_node->link;
+    current_node->link = previous_node;
+    previous_node = current_node;
+    current_node = next_node;
+  }
+  next_node = current_node->link; //basically making next =NULL
+  current_node->link = previous_node;
+  head = current_node;\
+  return;
 }
 void addOne(){
   return;
