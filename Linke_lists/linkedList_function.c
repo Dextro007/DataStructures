@@ -1,5 +1,23 @@
 /*
-Problem Statment - 1. write a function to insert data at beginning of a linked list
+Problem Statment - write functions to:
+      1.insert at the beginning of a linked list
+      2. insert at nth position
+      3. push
+      4. pop
+      5. delete at nth position
+      6. print list
+      7. reverse a linked list
+
+approach : reverse the linked list:
+    1. make 3 nodes, next, current, previous
+    2. Initialize previous node to NULL, current_node = head
+    3. Traverse and
+        move next node to current_node's link
+    4. point current_node's link to previous_node
+    5. move previous_node to current_node
+    6. move current_node to next_node
+    7. handle the last node containing NULL out of while
+    8. update the head to current_node
 */
 #include<stdio.h>
 #include<stdlib.h>
@@ -128,7 +146,9 @@ void reverse_list(){
     previous_node = current_node;
     current_node = next_node;
   }
-  head = previous_node;
+  next_node = current_node->link;
+  current_node->link = previous_node;
+  head = current_node;
   return;
 }
 // funtion to implement pop functionality(deleting at end)
@@ -167,5 +187,8 @@ int main(){
     //  }
      print_list();
      printf("length of the Linked list is : %lu\n", listLength);
+     reverse_list();
+     printf("The reversed list is: \n");
+     print_list();
      return 0;
 }

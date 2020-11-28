@@ -7,8 +7,10 @@ struct Node{
 };
 struct Node *head;
 
+void reverse_list(){
+  
+}
 void addOne(){
-
   return;
 }
 // test function
