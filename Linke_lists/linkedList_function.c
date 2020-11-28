@@ -144,7 +144,6 @@ void pop(){
   return;
 }
 //-------------
-void func(){}
 
 int main(){
     int n,i,number;
