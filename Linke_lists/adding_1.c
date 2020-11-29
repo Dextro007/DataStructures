@@ -16,6 +16,8 @@ struct Node *head;
 unsigned char isEmpty(){
   return head == NULL;
 }
+
+// function to reverse the list
 void reverse_list(){
   if(isEmpty()){
     printf("The list is empty. \n");
@@ -34,10 +36,33 @@ void reverse_list(){
   }
   next_node = current_node->link; //basically making next =NULL
   current_node->link = previous_node;
-  head = current_node;\
+  head = current_node;
   return;
 }
+
 void addOne(){
+  int carry=1, sum=0;
+  reverse_list();
+  struct Node *current_node = (struct Node*)malloc(sizeof(struct Node));
+  current_node = head;
+  while(current_node->link != NULL){
+    sum = current_node->data + carry;
+    current_node->data = sum%10;
+    carry = sum/10;
+    current_node = current_node->link;
+  }
+  //handling last element
+  sum = current_node->data + carry;
+  current_node->data = sum%10;
+  carry = sum/10;
+  //---------------***----------------//
+  if(carry > 0){
+    struct Node *new_node = (struct Node*)malloc(sizeof(struct Node));
+    new_node->link = NULL;
+    new_node->data = carry;
+    current_node->link = new_node;
+  }
+  reverse_list();
   return;
 }
 // test function
@@ -71,14 +96,21 @@ void print_list(){
     i++;
   }
   printf("Element at %d position is : %d \n", i, traverse_node->data);
+  printf("----------END OF LIST-------------\n");
   return;
 }
 
 int main(){
   head = NULL;
-  push(10);
-  push(7);
-  push(6);
+  push(9);
+  push(9);
+  push(9);
+  push(9);
+  print_list();
+  // reverse_list();
+  // print_list();
+  addOne();
+  printf("List after adding 1: \n");
   print_list();
   return 0;
 }
