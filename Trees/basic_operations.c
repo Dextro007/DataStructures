@@ -11,7 +11,16 @@ Trees can be implemented using:
 
 #include<stdio.h>
 #include<stdlib.h>
+#include "basic_operations.h"
 
-int main(){
-  return 0;
+static void Init();
+// stat
+
+void dummy(){
+  printf("dummy function called");
 }
+
+// int main(){
+//   printf("Hello");
+//   return 0;
+// }
