@@ -12,15 +12,17 @@ Trees can be implemented using:
 #include<stdio.h>
 #include<stdlib.h>
 #include "basic_operations.h"
-
+// declaring all the static functions needed for a BST.
 static void Init();
-// stat
-
-void dummy(){
-  printf("dummy function called");
+static unsigned char isEmpty();
+static void insert_node();
+/*------------------------------------------------------------------*/
+static void Init(){
+  root = NULL;
 }
 
-// int main(){
-//   printf("Hello");
-//   return 0;
-// }
+int main(){
+  Init();
+
+  return 0;
+}
