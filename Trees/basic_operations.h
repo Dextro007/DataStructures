@@ -16,7 +16,7 @@ struct Tree{
   struct Tree *right;
 };
 
-extern struct Tree *root;
+// extern struct Tree *root;
 extern unsigned long calc_height();
 extern unsigned long total_nodes();
 #endif
