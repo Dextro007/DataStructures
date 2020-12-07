@@ -15,7 +15,8 @@ Trees can be implemented using:
 // declaring all the static functions needed for a BST.
 static void Init();
 static unsigned char isEmpty();
-static void insert_node(long data);
+static struct Tree* create_node(long data);
+static struct Tree* insert(struct Tree *root, long data);
 /*------------------------------------------------------------------*/
 
 struct Tree *root;
@@ -27,19 +28,33 @@ static void Init(){
   root = NULL;
   return;
 }
-
-static void insert_node(long data){
+// here  we try to create a tree node.
+static struct Tree* create_node(long data){
   struct Tree *new_node = (struct Tree*)malloc(sizeof(struct Tree));
   new_node->data = data;
   new_node->left = NULL;
   new_node->right = NULL;
+  return new_node;
+
   // printf("Root data is: %d \n", root->data);
+}
+// compare the data and then store the data acc. BST
+static struct Tree* insert(struct Tree* root, long data){
+  if(root == NULL){
+     root = create_node(data);
+     return root;
+  }
+  else if(data <= root->data){
+    root->left = insert(root->left,data);
+  }
+  else{
+    root->right = insert(root->right, data);
+  }
 }
 
 int main(){
   // initializing the Root
   Init();
-  insert_node(10);
-  printf("the value in root is: %d \n", root->data);
+  // printf("the value in root is: %d \n", root->data);
   return 0;
 }
