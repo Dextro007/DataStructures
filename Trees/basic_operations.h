@@ -15,8 +15,10 @@ struct Tree{
   struct Tree *left;
   struct Tree *right;
 };
-
+#define True (unsigned char)1
+#define False (unsigned char)0
 // extern struct Tree *root;
 extern unsigned long calc_height();
 extern unsigned long total_nodes();
+extern unsigned char search(struct Tree *root, long data);
 #endif

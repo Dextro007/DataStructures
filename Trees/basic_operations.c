@@ -50,11 +50,30 @@ static struct Tree* insert(struct Tree* root, long data){
   else{
     root->right = insert(root->right, data);
   }
+  return root;
+}
+
+unsigned char search(struct Tree* root, long data){
+  if(root == NULL)
+    return False;
+  else if(root->data == data){
+    return True;
+  }
+  else if(data < root->data){
+    return search(root->left, data);
+  }
+  else
+    return search(root->right, data);
+
 }
 
 int main(){
   // initializing the Root
   Init();
+  root  = insert(root, 10);
+  root = insert(root, 8);
+  root = insert(root, 15);
+  printf("searching 25: %d", search(root, 25));
   // printf("the value in root is: %d \n", root->data);
   return 0;
 }
