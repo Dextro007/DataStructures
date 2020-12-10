@@ -17,7 +17,7 @@ static void Init();
 static unsigned char isEmpty();
 static struct Tree* create_node(long data);
 static struct Tree* insert(struct Tree *root, long data);
-static void print2Dtree(struct Tree, unsigned long space);
+static void print2Dtree(struct Tree *root, unsigned long space);
 /*------------------------------------------------------------------*/
 
 struct Tree *root;
@@ -69,7 +69,22 @@ unsigned char search(struct Tree* root, long data){
 
 }
 
-static void print2Dtree(struct Tree, unsigned long space)
+static void print2Dtree(struct Tree* root, unsigned long space){
+  if(root == NULL){
+    return;
+  }
+  unsigned long i;
+  space += COUNT;
+
+  print2Dtree(root->right, space);
+  printf("\n");
+  for(i = (unsigned long)COUNT; i<space; i++){
+    printf(" ");
+  }
+  printf("%d\n", root->data);
+
+  print2Dtree(root->left, space);
+}
 
 int main(){
   // initializing the Root
@@ -77,7 +92,9 @@ int main(){
   root  = insert(root, 10);
   root = insert(root, 8);
   root = insert(root, 15);
-  printf("searching 15: %d", search(root, 15));
+  root = insert(root, 11);
+  print2Dtree(root, 5);
+  //printf("searching 15: %d", search(root, 15));
   // printf("the value in root is: %d \n", root->data);
   return 0;
 }
