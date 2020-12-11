@@ -14,18 +14,20 @@ Trees can be implemented using:
 #include "basic_operations.h"
 // declaring all the static functions needed for a BST.
 static void Init();
+#if DISABLE
 static unsigned char isEmpty();
+#endif
 static struct Tree* create_node(long data);
 static struct Tree* insert(struct Tree *root, long data);
 static void print2Dtree(struct Tree *root, unsigned long space);
 /*------------------------------------------------------------------*/
 
 struct Tree *root;
-
+#if DISABLE
 static unsigned char isEmpty(){
   return root==NULL;
 }
-
+#endif
 static void Init(){
   root = NULL;
   return;
@@ -85,6 +87,36 @@ static void print2Dtree(struct Tree* root, unsigned long space){
 
   print2Dtree(root->left, space);
 }
+// function to find and return the height of
+/*
+ALGO:
+1. If tree is empty then return 0
+2. Else
+     (a) Get the maximum height of left subtree recursively  i.e.,
+          call calc_height( root->left_subtree)
+     (a) Get the max height of right subtree recursively  i.e.,
+          call calc_height( root->right_subtree)
+     (c) Get the max of maximum heights of left and right
+          subtrees and add 1 to it for the current node.
+         calc_height = max(max height of left subtree,
+                             max height of right subtree)
+                             + 1
+     (d) Return max
+*/
+unsigned long calc_height(struct Tree *root){
+  if(root == NULL){
+    return 0;
+  }
+  unsigned long lheight, rheight;
+  lheight = calc_height(root->left);
+  rheight = calc_height(root->right);
+
+  if(lheight>rheight){
+    return (lheight+1);
+  }
+  else
+    return (rheight + 1);
+}
 
 int main(){
   // initializing the Root
@@ -92,8 +124,10 @@ int main(){
   root  = insert(root, 10);
   root = insert(root, 8);
   root = insert(root, 15);
+  root = insert(root, 12);
   root = insert(root, 11);
   print2Dtree(root, 5);
+  printf("height of the tree is: %lu\n", calc_height(root));
   //printf("searching 15: %d", search(root, 15));
   // printf("the value in root is: %d \n", root->data);
   return 0;

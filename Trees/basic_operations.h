@@ -15,12 +15,13 @@ struct Tree{
   struct Tree *left;
   struct Tree *right;
 };
+extern unsigned long height;
 // generci counter maily designed for print2Dtree function
 #define COUNT (unsigned char)10
 #define True (unsigned char)1
 #define False (unsigned char)0
 // extern struct Tree *root;
-extern unsigned long calc_height();
+extern unsigned long calc_height(struct Tree *root);
 extern unsigned long total_nodes();
 extern unsigned char search(struct Tree *root, long data);
 #endif
