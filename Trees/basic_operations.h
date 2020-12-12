@@ -17,6 +17,7 @@ struct Tree{
 };
 extern unsigned long height;
 // generci counter maily designed for print2Dtree function
+#define DISABLE 0
 #define COUNT (unsigned char)10
 #define True (unsigned char)1
 #define False (unsigned char)0
