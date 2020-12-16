@@ -21,6 +21,7 @@ static struct Tree* create_node(long data){
   new_node->data = data;
   new_node->left = NULL;
   new_node->right = NULL;
+  return new_node;
 }
 
 static struct Tree* insert_node(struct Tree* root, long data){
