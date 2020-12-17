@@ -68,7 +68,6 @@ unsigned char search(struct Tree* root, long data){
   }
   else
     return search(root->right, data);
-
 }
 
 static void print2Dtree(struct Tree* root, unsigned long space){
