@@ -129,5 +129,6 @@ int main(){
   printf("height of the tree is: %lu\n", calc_height(root));
   //printf("searching 15: %d", search(root, 15));
   // printf("the value in root is: %d \n", root->data);
+
   return 0;
 }

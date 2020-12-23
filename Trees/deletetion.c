@@ -17,6 +17,7 @@ static struct Tree* insert_node(struct Tree* root, long data);
 static struct Tree* search(struct Tree* root, long data);
 static void delete_node(long data);
 void print2Dtree(struct Tree *root, unsigned long space);
+static struct Tree* minNode(struct Tree* root);
 //*****************************************************
 static struct Tree* create_node(long data){
   struct Tree *new_node = (struct Tree*)malloc(sizeof(struct Tree));
@@ -38,6 +39,7 @@ static Tree* insert_node(struct Tree *root, long data){
   }
   return root;
 }
+
 void print2Dtree(struct Tree *root, unsigned long space){
   if(root == NULL){
     return;
@@ -52,6 +54,28 @@ void print2Dtree(struct Tree *root, unsigned long space){
   printf("%ld", root->data);
   // after right print left
   print2Dtree(root->left, space);
+}
+
+static struct Tree* search(struct Tree* root, long data){
+  if(root == NULL)
+    return NULL;
+  else if(root->data == data){
+    return root;
+  }
+  else if(data < root->data){
+    root = search(root->left, data);
+  }
+  else{
+    root = search(root->right, data);
+  }
+  return root;
+}
+
+static struct Tree* minNode(struct Tree *root){
+  while(root->left != NULL){
+    root = root->left;
+  }
+  return root;
 }
 
 int main(){
