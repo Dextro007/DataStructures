@@ -78,8 +78,12 @@ static struct Tree* minNode(struct Tree *root){
   return root;
 }
 
+static void delete_node(long data){
+
+}
+
 int main(){
   root = NULL;
-
+  root = insert_node(root, 10);
   return 0;
 }
