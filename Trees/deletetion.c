@@ -27,7 +27,7 @@ static struct Tree* create_node(long data){
   return new_node;
 }
 
-static Tree* insert_node(struct Tree *root, long data){
+static struct Tree* insert_node(struct Tree *root, long data){
   if(root == NULL){
     root = create_node(data);
     return root;
@@ -47,6 +47,7 @@ void print2Dtree(struct Tree *root, unsigned long space){
   space += COUNT;
   // right most element are to be printed 1st
   print2Dtree(root->right, space);
+  printf("\n");
   for(unsigned long i = COUNT; i< space ; i++){
     printf(" ");
   }
@@ -115,6 +116,6 @@ int main(){
   root = insert_node(root, 60);
   root = insert_node(root, 40);
   root = insert_node(root, 80);
-  print2Dtree();
+  print2Dtree(root, 5);
   return 0;
 }
