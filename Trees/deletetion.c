@@ -79,11 +79,42 @@ static struct Tree* minNode(struct Tree *root){
 }
 
 static void delete_node(long data){
-
+  struct Tree *node = search(root, data);
+  if(node == NULL){
+    printf("No such node exist");
+    return;
+  }
+  else{
+    // if the node has no child
+    if(node->left == NULL && node->right == NULL){
+      free(node);
+    }else if(node->left != NULL && node->right == NULL){
+      struct Tree *temp = node->left;
+      node = temp;
+      free(temp);
+    }else if(node->right != NULL && node->left == NULL){
+      struct Tree *temp = node->right;
+      node = node->right;
+      free(temp);
+    }else{
+      struct Tree* temp = minNode(node->right);
+      long data = temp->data;
+      delete_node(data);
+      node->data = data;
+    }
+  }
+  return;
 }
 
 int main(){
   root = NULL;
-  root = insert_node(root, 10);
+  root = insert_node(root, 50);
+  root = insert_node(root, 30);
+  root = insert_node(root, 70);
+  root = insert_node(root, 20);
+  root = insert_node(root, 60);
+  root = insert_node(root, 40);
+  root = insert_node(root, 80);
+  print2Dtree();
   return 0;
 }
