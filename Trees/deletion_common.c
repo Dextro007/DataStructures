@@ -108,7 +108,7 @@ int main(){
   root = insert_node(root, 40);
   root = insert_node(root, 80);
   print2Dtree(root, 5);
-  printf("\n-------------***------------\n");
+  printf("\n-----------------------***--------------------\n");
   root = delete_node(root,50);
   print2Dtree(root, 5);
   printf("\n");
