@@ -1,15 +1,24 @@
+/*
+In this program I am trying to implement graph using Adjacency list.
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
+// all the adjacent vertices as linked lists
+struct adjVertices{
+  long data;
+  struct adjVertices *next;
+};
 
-//Graph representation using Edge list
-typedef struct{
-  char *startvertex;
-  char *endvertex;
-  int weight;
-}Edge;
+struct verticesHead{
+  struct adjVertices *head;
+};
 
-static void dfs();
-static void bfs();
+struct Graph{
+  struct verticesHead *head;
+};
+
+
 
 int main(){
   return 0;
