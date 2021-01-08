@@ -14,13 +14,15 @@ struct verticesHead{
   struct adjVertices *head;
 };
 
-struct Graph{
-  long V;
+struct graph{
+  long vertice;
   struct verticesHead *head;
 };
 
-
-
+struct graph* createGraph(long vertices){
+  struct graph *new_graph  = (struct graph*)malloc(sizeof(struct graph));
+  
+}
 
 int main(){
   return 0;
