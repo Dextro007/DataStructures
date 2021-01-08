@@ -15,8 +15,10 @@ struct verticesHead{
 };
 
 struct Graph{
+  long V;
   struct verticesHead *head;
 };
+
 
 
 
