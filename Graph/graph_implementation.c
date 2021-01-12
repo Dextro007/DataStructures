@@ -53,7 +53,25 @@ struct graph* createGraph(long Vertices){
   return new_graph;
 }
 
+void print_graph(struct graph *graph){
+  int v;
+  struct adj_vertices *traverse = NULL;
+  for(v=0; v< graph->vertices; v++){
+    traverse = graph->v_array[v].head;
+    //check if there is only one element in the list
+    if(traverse->next == NULL){
+      printf("(%ld)\n", traverse->linked_vertex);
+      continue;
+    }
+    while(traverse->next != NULL){
+      printf("(%ld)->", traverse->linked_vertex);
+      traverse = traverse->next;
+    }
+    printf("\n");
+  }
+}
 
 int main(){
+  
   return 0;
 }

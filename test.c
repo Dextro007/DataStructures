@@ -2,11 +2,18 @@
 #include<stdlib.h>
 
 unsigned char test_func(){
-  int a=5, b=5;
-  return a==b;
+  int a = 0;
+  int *ptr = NULL;
+  while(ptr){
+    if(a>5)
+      break;
+    a++;
+    // printf("%d\n", a);
+  }
+  return a;
 }
 
 int main(){
-  printf("The result is : %d\n", test_func());
+   printf("Value of a : %d\n",test_func());
   return 0;
 }
