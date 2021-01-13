@@ -1,19 +1,20 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-unsigned char test_func(){
-  int a = 0;
-  int *ptr = NULL;
-  while(ptr){
-    if(a>5)
-      break;
-    a++;
-    // printf("%d\n", a);
+static unsigned int counter = 0;
+
+void test_func(){
+  counter++;
+  if(counter > 15){
+    counter = 0;
   }
-  return a;
 }
 
 int main(){
-   printf("Value of a : %d\n",test_func());
+  for(int i = 0; i<48; i++){
+    test_func();
+    printf("%u\t", counter);
+  }
+  printf("\n");
   return 0;
 }

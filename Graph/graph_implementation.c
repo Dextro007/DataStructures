@@ -74,6 +74,13 @@ void print_graph(struct graph *graph){
 int main(){
   long Vertices = 6;
   struct graph *g1 = createGraph(Vertices);
-  add
+  add_linked_vertex(g1, 0,1);
+  add_linked_vertex(g1, 0,4);
+  add_linked_vertex(g1,1,4);
+  add_linked_vertex(g1, 1,2);
+  add_linked_vertex(g1, 1,3);
+  add_linked_vertex(g1, 2,3);
+  add_linked_vertex(g1,3,4);
+  // add_linked_vertex(g1)
   return 0;
 }
