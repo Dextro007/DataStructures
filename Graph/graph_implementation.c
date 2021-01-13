@@ -72,6 +72,8 @@ void print_graph(struct graph *graph){
 }
 
 int main(){
-  
+  long Vertices = 6;
+  struct graph *g1 = createGraph(Vertices);
+  add
   return 0;
 }
