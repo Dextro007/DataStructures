@@ -11,10 +11,6 @@ void test_func(){
 }
 
 int main(){
-  for(int i = 0; i<48; i++){
-    test_func();
-    printf("%u\t", counter);
-  }
-  printf("\n");
+  test_func();
   return 0;
 }
