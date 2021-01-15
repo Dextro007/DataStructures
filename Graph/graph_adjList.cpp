@@ -8,7 +8,10 @@ Approach :        construction of graphs in C++ is quite simpleby using vector
 #include<vector>
 using namespace std;
 
-void add_vertices(vector<long> vertex_list[], long source, long destination);
+void add_vertices(vector<long> vertex_list[], long source, long destination){
+
+  return ;
+}
 
 
 int main(){
