@@ -18,6 +18,7 @@ void add_vertices(vector<long> vertex_list[], long source, long destination){
 int main(){
   int number_of_vertices = 6;
   vector<long> graph[number_of_vertices];
-  add_vertices()
+  add_vertices(graph, 0,1);
+
   return 0;
 }
