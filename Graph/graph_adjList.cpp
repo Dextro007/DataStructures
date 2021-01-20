@@ -15,7 +15,7 @@ void add_vertices(vector<long> vertex_list[], long source, long destination){
 }
 
 void print_graph(vector<long> graph[]){
-  cout<< "The size of the graph is: "<<graph[0].size();
+  cout<< "The size of the graph is: "<<graph[1].size();
 }
 
 int main(){
@@ -28,5 +28,6 @@ int main(){
   add_vertices(graph, 1,3);
   add_vertices(graph, 2,3);
   add_vertices(graph, 3,4);
+  print_graph(graph);
   return 0;
 }
