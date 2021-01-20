@@ -1,13 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-static unsigned int counter = 0;
+// static unsigned int counter = 0;
 
 void test_func(){
-  counter++;
-  if(counter > 15){
-    counter = 0;
-  }
+  short signed int a = 12;
+  printf("%u", (unsigned short int)(~a+1));
 }
 
 int main(){
