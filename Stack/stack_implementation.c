@@ -33,10 +33,47 @@ static struct Stack* create_stack(unsigned long capacity){
   new_stack->capacity = capacity;
   //since 1st element in the stack will be at index 0;
   new_stack->top = -1;
+  return new_stack;
 }
 
 // function to check if the stack is is isFull
+enum stack_status isEmpty(struct Stack *stack){
+  if(stack->top == -1){
+    return EMPTY;
+  }
+  else{
+    return NOT_EMPTY;
+  }
+}
 
+enum stack_status isFull(struct Stack *stack){
+  if(stack->top == stack->capacity - 1){
+    return FULL;
+  }
+  else{
+    return NOT_FULL;
+  }
+}
+void push(struct Stack *stack, long data){
+  if(isFull(stack) == FULL){
+    printf("Overflow: The stack is full\n");
+  }
+  else{
+    stack->array[++stack->top] = data;
+    printf("Item %ld pushed\n", data);
+  }
+  return;
+}
+
+long pop(struct Stack *stack){
+  if(isEmpty(stack) == EMPTY){
+    printf("Underflow: the stack is empty.\n");
+    return NULL;
+  }
+  else{
+    return stack->array[stack->top--];
+  }
+}
 int main(){
 
   return 0;
