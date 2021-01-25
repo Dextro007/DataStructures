@@ -12,11 +12,18 @@ struct Stack{
   unsigned long capacity;
   long *array;
 };
+// enum to describe different states of a stack
+enum stack_status{
+  EMPTY,
+  NOT_EMPTY,
+  FULL,
+  NOT_FULL,
+};
 //-----------------------------FUNCTIONS-DECLARATION----------------------------
 void push(struct Stack *stack, long data);
 long pop(struct Stack *stack);
-unsigned char isEmpty(struct Stack *stack);
-unsigned char isFull(struct Stack *stack);
+enum stack_status isEmpty(struct Stack *stack);
+enum stack_status isFull(struct Stack *stack);
 static struct Stack* create_stack(unsigned long capacity);
 //----------------------------*****************---------------------------------
 
@@ -28,7 +35,8 @@ static struct Stack* create_stack(unsigned long capacity){
   new_stack->top = -1;
 }
 
-// function to check if the 
+// function to check if the stack is is isFull
+
 int main(){
 
   return 0;
