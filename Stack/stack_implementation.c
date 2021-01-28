@@ -33,6 +33,7 @@ static struct Stack* create_stack(unsigned long capacity){
   new_stack->capacity = capacity;
   //since 1st element in the stack will be at index 0;
   new_stack->top = -1;
+  new_stack->array = (long *)malloc(new_stack->capacity * sizeof(long));
   return new_stack;
 }
 
@@ -75,6 +76,20 @@ long pop(struct Stack *stack){
   }
 }
 int main(){
-
+  unsigned long stack_capacity = 7;
+  struct Stack *stack = create_stack(stack_capacity);
+  push(stack, 2);
+  push(stack, 4);
+  push(stack, 1);
+  push(stack, 5);
+  push(stack, 7);
+  push(stack, 8);
+  push(stack, 11);
+  // checking the overflow of stack
+  push(stack, 12);
+  // to check the stack current length
+  printf("Current capacity is stack is: %ld \n", stack->top);
+  // to check the top element of the stack
+  printf("Top of the stack is : %ld \n", stack->array[stack->top]);
   return 0;
 }
