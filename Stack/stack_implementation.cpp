@@ -18,4 +18,19 @@ public:
   bool pop();
   long view_top();
   bool isEmpty();
+  bool isFull();
 };
+
+
+
+bool Stack::push(long data){
+  if(isFull()){
+    cout<< "Overflow : Can't insert the stack is full"<< "\n";
+    return false;
+  }
+  else{
+    array[++top] = data;
+    cout<<data<<" pushed to the stack"<< "\n";
+    return true;
+  }
+}
