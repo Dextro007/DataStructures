@@ -22,6 +22,15 @@ public:
 };
 
 
+bool Stack::isFull(){
+  if(top == capacity){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
 
 bool Stack::push(long data){
   if(isFull()){
