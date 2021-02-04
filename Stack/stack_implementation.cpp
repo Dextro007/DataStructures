@@ -16,7 +16,7 @@ public:
   }
   bool push(long data);
   bool pop();
-  long view_top();
+  void view_top();
   bool isEmpty();
   bool isFull();
 };
@@ -39,6 +39,15 @@ bool Stack::isEmpty(){
   }
 }
 
+void Stack::view_top(){
+  if(isEmpty()){
+    cout<<"The stack is empty, nothing to print\n";
+    return;
+  }else{
+    cout<< "Top of Stack: "<<array[top]<<"\n";
+  }
+  return;
+}
 bool Stack::push(long data){
   if(isFull()){
     cout<< "Overflow : Can't insert the stack is full"<< "\n";
