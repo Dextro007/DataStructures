@@ -31,6 +31,13 @@ bool Stack::isFull(){
   }
 }
 
+bool Stack::isEmpty(){
+  if(top == -1){
+    return true;
+  }else{
+    return false;
+  }
+}
 
 bool Stack::push(long data){
   if(isFull()){
