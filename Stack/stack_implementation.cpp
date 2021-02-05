@@ -23,6 +23,7 @@ public:
 
 
 bool Stack::isFull(){
+  // top should start with -1, also the max capacity = 2147483648(max signed long)
   if(top == capacity){
     return true;
   }
@@ -58,4 +59,19 @@ bool Stack::push(long data){
     cout<<data<<" pushed to the stack"<< "\n";
     return true;
   }
+}
+bool Stack::pop(){
+  bool ret_value = false;
+  if(isEmpty()){
+    cout<<"Error: The stack is empty, nothing to delete. \n";
+  }else{
+    cout<< array[top--]<<" Deleted from the stack\n";
+    ret_value = true;
+  }
+  return ret_value;
+}
+
+int main(){
+
+  return 0;
 }
