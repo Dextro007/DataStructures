@@ -12,7 +12,7 @@ public:
   Stack(unsigned long stack_capacity){
     top = -1;
     capacity = stack_capacity;
-    array = new long[stack_capacity];
+    array = new long[capacity];
   }
   bool push(long data);
   bool pop();
@@ -71,7 +71,26 @@ bool Stack::pop(){
   return ret_value;
 }
 
+void functionality_test(unsigned long capacity){
+  Stack s(capacity);
+  s.push(6);
+  s.push(4);
+  s.push(2);
+  s.push(5);
+  s.push(1);
+  s.push(7);
+  s.push(8);
+  s.push(10);
+  s.push(9);
+  s.push(3);
+  s.push(11);
+  s.push(12);
+  s.view_top();
+  s.pop();
+  s.view_top();
+}
 int main(){
-
+  unsigned long capacity = 10;
+  functionality_test(capacity);
   return 0;
 }
