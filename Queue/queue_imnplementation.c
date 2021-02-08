@@ -19,7 +19,11 @@ enum queueStates{
 };
 
 //--------------------------Functions------------------------
-void isfull(struct Queue* q);
+enum queueStates isfull(struct Queue* q);
+enum queueStates isEmpty(struct Queue* q);
+long push_back(struct Queue* q, long data);
+long pop_front(struct Queue* q);
+
 
 int main(){
 
