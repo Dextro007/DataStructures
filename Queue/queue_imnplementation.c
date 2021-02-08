@@ -11,6 +11,15 @@ struct Queue{
   long tail;
   long *array;
 };
+enum queueStates{
+  EMPTY,
+  FULL,
+  NOT_EMPTY,
+  NOT_FULL
+};
+
+//--------------------------Functions------------------------
+void isfull(struct Queue* q);
 
 int main(){
 
