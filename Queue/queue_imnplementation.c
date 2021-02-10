@@ -23,10 +23,11 @@ enum queueStates{
 
 //--------------------------Functions------------------------
 enum queueStates isfull(struct Queue* q);
-enum queueStates isEmpty(struct Queue* q);
+enum queueStates isempty(struct Queue* q);
 long enqueue(struct Queue* q, long data);
 long dequeue(struct Queue* q);
 struct Queue* createQueue(unsigned long queue_length);
+void printQueue(struct Queue *q);
 //-----------------------------------------------------------
 
 struct Queue* createQueue(unsigned long queue_capacity){
@@ -42,6 +43,14 @@ enum queueStates isfull(struct Queue* q){
     return FULL;
   }else{
     return NOT_FULL;
+  }
+}
+
+enum queueStates isempty(struct Queue* q){
+  if(q->head == -1){
+    return EMPTY;
+  }else{
+    return NOT_EMPTY;
   }
 }
 
