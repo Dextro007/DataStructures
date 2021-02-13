@@ -21,11 +21,15 @@ enum queueStates{
   NOT_FULL
 };
 
+enum Bool{
+  True,
+  False
+};
 //--------------------------Functions------------------------
 enum queueStates isfull(struct Queue* q);
 enum queueStates isempty(struct Queue* q);
-long enqueue(struct Queue* q, long data);
-long dequeue(struct Queue* q);
+Bool enqueue(struct Queue* q, long data);
+Bool dequeue(struct Queue* q);
 struct Queue* createQueue(unsigned long queue_length);
 void printQueue(struct Queue *q);
 //-----------------------------------------------------------
@@ -51,6 +55,19 @@ enum queueStates isempty(struct Queue* q){
     return EMPTY;
   }else{
     return NOT_EMPTY;
+  }
+}
+
+Bool enqueue(struct Queue *q, long data){
+  if(isempty(q) == EMPTY){
+    q->array[++q->head] == data;
+    q->tail++;
+
+  }else if(isfull(q) == FULL){
+    printf("Overflow : The queue is ready full\n");
+
+  }else{
+
   }
 }
 
