@@ -22,8 +22,8 @@ enum queueStates{
 };
 
 enum Bool{
-  True,
-  False
+  TRUE,
+  FALSE
 };
 //--------------------------Functions------------------------
 enum queueStates isfull(struct Queue* q);
@@ -59,16 +59,23 @@ enum queueStates isempty(struct Queue* q){
 }
 
 Bool enqueue(struct Queue *q, long data){
+  Bool ret_val;
   if(isempty(q) == EMPTY){
-    q->array[++q->head] == data;
+    q->array[++q->head] = data;
     q->tail++;
-
-  }else if(isfull(q) == FULL){
-    printf("Overflow : The queue is ready full\n");
-
-  }else{
-
+    printf("%ld enqueued to the queue\n", q->array[q->head]);
+    ret_val = TRUE;
   }
+  else if(isfull(q) == FULL){
+    printf("Overflow : The queue is ready full\n");
+    ret_val = FALSE;
+  }
+  else{
+    q->array[++q->head] = data;
+    printf("%ld enqueued to the queue\n", q->array[q->head]);
+    ret_val = TRUE;
+  }
+  return ret_val;
 }
 
 int main(){
