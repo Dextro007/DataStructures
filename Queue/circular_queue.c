@@ -24,3 +24,10 @@ enum queueStates{
   NOT_FULL,
 };
 //---------------------Functions------------------------
+enum queueStates isfull(struct Cqueue *Cq);
+enum queueStates isempty(struct Cqueue *Cq);
+void enqueue(struct Cqueue *Cq, long data);
+void dequeue(struct Cqueue *Cq);
+struct Cqueue* createQueue(unsigned long queue_capacity);
+void printQueue(struct Cqueue *Cq);
+//------------------------------------------------------
