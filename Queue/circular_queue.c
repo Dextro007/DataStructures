@@ -40,3 +40,21 @@ struct Cqueue* createQueue(unsigned long queue_capacity){
   circular_queue->array = (long *)malloc(queue_capacity * sizeof(long));
   return circular_queue;
 }
+
+enum queueStates isfull(struct Cqueue *cq){
+  if(cq->size == cq->capacity){
+    return FULL;
+  }
+  else{
+    return NOT_FULL;
+  }
+}
+
+enum queueStates isempty(struct Cqueue *cq){
+  if(cq->size == 0){
+    return EMPTY;
+  }
+  else{
+    return NOT_EMPTY;
+  }
+}
