@@ -31,3 +31,12 @@ void dequeue(struct Cqueue *Cq);
 struct Cqueue* createQueue(unsigned long queue_capacity);
 void printQueue(struct Cqueue *Cq);
 //------------------------------------------------------
+
+struct Cqueue* createQueue(unsigned long queue_capacity){
+  struct Cqueue *circular_queue = (struct Cqueue*)malloc(sizeof(struct Cqueue));
+  circular_queue->capacity = queue_capacity;
+  circular_queue->size = 0;
+  circular_queue->head = circular_queue->tail = 0;
+  circular_queue->array = (long *)malloc(queue_capacity * sizeof(long));
+  return circular_queue;
+}
