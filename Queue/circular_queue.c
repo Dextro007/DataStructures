@@ -36,7 +36,7 @@ struct Cqueue* createQueue(unsigned long queue_capacity){
   struct Cqueue *circular_queue = (struct Cqueue*)malloc(sizeof(struct Cqueue));
   circular_queue->capacity = queue_capacity;
   circular_queue->size = 0;
-  circular_queue->head = circular_queue->tail = 0;
+  circular_queue->head = circular_queue->tail = -1;
   circular_queue->array = (long *)malloc(queue_capacity * sizeof(long));
   return circular_queue;
 }
@@ -56,5 +56,24 @@ enum queueStates isempty(struct Cqueue *cq){
   }
   else{
     return NOT_EMPTY;
+  }
+}
+void enqueue(struct Cqueue *Cq, long data){
+  if(isfull(Cq) == FULL){
+    printf("Overflow: The queue is already full. \n");
+    return;
+  }
+  else{
+    Cq->head = (Cq->head + 1) % (Cq->capacity);
+    Cq->array[Cq->head] = data;
+    printf("%ld was enqueued in the queue\n");
+    Cq->size += 1;
+    return;
+  }
+}
+
+void dequeue(struct Cqueue *Cq){
+  if(isempty(Cq) == EMPTY){
+
   }
 }
