@@ -84,3 +84,8 @@ void dequeue(struct Cqueue *Cq){
   }
   return;
 }
+
+int main(){
+
+  return 0;
+}
