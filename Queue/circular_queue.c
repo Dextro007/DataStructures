@@ -66,7 +66,7 @@ void enqueue(struct Cqueue *Cq, long data){
   else{
     Cq->head = (Cq->head + 1) % (Cq->capacity);
     Cq->array[Cq->head] = data;
-    printf("%ld was enqueued in the queue\n");
+    printf("%ld was enqueued in the queue\n", Cq->array[Cq->head]);
     Cq->size += 1;
     return;
   }
@@ -74,6 +74,13 @@ void enqueue(struct Cqueue *Cq, long data){
 
 void dequeue(struct Cqueue *Cq){
   if(isempty(Cq) == EMPTY){
-
+    printf("The stack is empty\n");
+    return;
   }
+  else{
+    printf("%ld dequeued from the queue.\n", Cq->array[Cq->tail]);
+    Cq->tail = (Cq->tail + 1)%Cq->capacity;
+    Cq->size -= 1;
+  }
+  return;
 }
