@@ -86,6 +86,8 @@ void dequeue(struct Cqueue *Cq){
 }
 
 int main(){
+  unsigned long capacity = 10;
+  struct Cq *new_queue = createQueue(capacity);
 
   return 0;
 }
