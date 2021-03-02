@@ -63,18 +63,24 @@ void enqueue(struct Cqueue *Cq, long data){
     printf("Overflow: The queue is already full. \n");
     return;
   }
+  else if(isempty(Cq)==EMPTY){
+    Cq->head = Cq->tail = 0;
+    Cq->array[Cq->head] = data;
+    printf("%ld enqueued in the queue\n", Cq->array[Cq->head]);
+    Cq->size += 1;
+  }
   else{
     Cq->head = (Cq->head + 1) % (Cq->capacity);
     Cq->array[Cq->head] = data;
     printf("%ld was enqueued in the queue\n", Cq->array[Cq->head]);
     Cq->size += 1;
-    return;
   }
+  return;
 }
 
 void dequeue(struct Cqueue *Cq){
   if(isempty(Cq) == EMPTY){
-    printf("The stack is empty\n");
+    printf("The queue is empty\n");
     return;
   }
   else{
@@ -87,7 +93,11 @@ void dequeue(struct Cqueue *Cq){
 
 int main(){
   unsigned long capacity = 10;
-  struct Cq *new_queue = createQueue(capacity);
-
+  struct Cqueue *new_queue = createQueue(capacity);
+  dequeue(new_queue);
+  enqueue(new_queue,1);
+  enqueue(new_queue,2);
+  enqueue(new_queue,3);
+  dequeue(new_queue);
   return 0;
 }
