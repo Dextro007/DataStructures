@@ -12,5 +12,17 @@ public:
 };
 
 Graph :: Graph(unsigned long Vertices){
+  this->V = Vertices;
+}
+void Graph::add_vertices(long source, long destination){
+  adjacency_list[source].push_back(destination);
+  adjacency_list[destination].push_back(sources);
+}
+
+void Graph::bfs(long source){
+
+}
+
+int main(){
   
 }
