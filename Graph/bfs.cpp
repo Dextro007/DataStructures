@@ -21,7 +21,10 @@ void Graph::add_vertices(long source, long destination){
 }
 
 void Graph::bfs(long source){
-  
+  bool *visited =  new bool[V];
+  for(unsigned long i=0; i<V; i++){
+    visited[i] = false;
+  }
 }
 
 int main(){
