@@ -1,3 +1,8 @@
+/*
+Problem  : breadth for search for directed graph
+Note :     this program is specifically for directed graph
+*/
+
 #include<iostream>
 #include<list>
 using namespace std;
@@ -17,7 +22,8 @@ Graph :: Graph(unsigned long Vertices){
 }
 void Graph::add_vertices(long source, long destination){
   adjacency_list[source].push_back(destination);
-  adjacency_list[destination].push_back(source);
+  // Since the code is for directed graph
+  // adjacency_list[destination].push_back(source);
 }
 
 void Graph::bfs(long source){
@@ -28,7 +34,7 @@ void Graph::bfs(long source){
   list<long> queue;
   visited[source] = true;
   queue.push_back(source);
-  
+
 }
 
 int main(){
