@@ -34,9 +34,31 @@ void Graph::bfs(long source){
   list<long> queue;
   visited[source] = true;
   queue.push_back(source);
+  list<long>::iterator it;
+  while(!queue.empty()){
+    long currVertices = queue.front();
+    cout<<currVertices<< " ";
+    queue.pop_front();
 
+    for(it = adjacency_list[currVertices].begin(); it != adjacency_list[currVertices].end(); it++){
+      if(!(visited[*it])){
+        visited[*it] = true;
+        queue.push_back(*it);
+      }
+    }
+  }
 }
 
 int main(){
+  Graph gr(4);
+  gr.add_vertices(0,1);
+  gr.add_vertices(0, 2);
+  gr.add_vertices(1, 2);
+  gr.add_vertices(2, 0);
+  gr.add_vertices(2, 3);
+  gr.add_vertices(3,3);
 
+  cout<<"BFS: ";
+  gr.bfs(2);
+  return 0;
 }
