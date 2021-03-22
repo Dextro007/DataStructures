@@ -12,7 +12,7 @@ public:
 };
 
 Graph :: Graph(unsigned long Vertices){
-  this->V = Vertices;
+  this->V = Vertices;                  // test it without using this
   adjacency_list = new list<long>[V];
 }
 void Graph::add_vertices(long source, long destination){
@@ -25,6 +25,10 @@ void Graph::bfs(long source){
   for(unsigned long i=0; i<V; i++){
     visited[i] = false;
   }
+  list<long> queue;
+  visited[source] = true;
+  queue.push_back(source);
+  
 }
 
 int main(){
