@@ -1,15 +1,19 @@
 #include<iostream>
-#include<vector>
-
+#include<climits>
+#include<array>
 using namespace std;
 
+long ret_max(long arr[], unsigned long size){
+  long max = INT_MIN;
+  for(unsigned long i=0; i<size; i++){
+    if(arr[i]>max){
+      max = arr[i];
+    }
+  }
+  return max;
+}
+
 int main(){
-  int a = 5;
-  if(a ==5){
-    cout<<"equal to 5";
-  }
-  else if(a==10){
-    cout<<"equal to 10";
-  }
+  long arr[10] = {0};
   return 0;
 }
