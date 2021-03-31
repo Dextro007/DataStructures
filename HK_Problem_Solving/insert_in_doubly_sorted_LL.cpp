@@ -73,9 +73,14 @@ void free_doubly_linked_list(DoublyLinkedListNode* node) {
  *
  */
 DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* head, int data) {
-  DoublyLinkedListNode *it = head;
+  DoublyLinkedListNode *it = head->next;
+  DoublyLinkedListNode *prev = head;
+  DoublyLinkedListNode *new_node = new DoublyLinkedListNode(data);
+  if(head == nullptr){
+
+  }
   while(it->next!= nullptr){
-    
+
   }
 }
 
