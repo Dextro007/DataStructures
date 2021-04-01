@@ -76,8 +76,9 @@ DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* head, int data) {
   DoublyLinkedListNode *it = head->next;
   DoublyLinkedListNode *prev = head;
   DoublyLinkedListNode *new_node = new DoublyLinkedListNode(data);
+  // if the list is completely empty then just insert.
   if(head == nullptr){
-
+    head = new_node;
   }
   while(it->next!= nullptr){
 
