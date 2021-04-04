@@ -72,18 +72,42 @@ void free_doubly_linked_list(DoublyLinkedListNode* node) {
  * };
  *
  */
-DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* head, int data) {
-  DoublyLinkedListNode *it = head->next;
-  DoublyLinkedListNode *prev = head;
-  DoublyLinkedListNode *new_node = new DoublyLinkedListNode(data);
-  // if the list is completely empty then just insert.
-  if(head == nullptr){
-    head = new_node;
-  }
-  while(it->next!= nullptr){
-
-  }
-}
+ DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* head, int data) {
+     DoublyLinkedListNode *it = head;
+     // DoublyLinkedListNode *prev = head;
+     DoublyLinkedListNode *new_node = new DoublyLinkedListNode(data);
+     if(head == nullptr){
+         head = new_node;
+     }
+     while(it->next!= nullptr){
+         if(data <= it->data){
+             new_node->prev = it->prev;
+             new_node->next = it;
+             if(it->prev != nullptr){
+                 it->prev->next = new_node;
+             }
+             if(head == it){
+                 head = new_node;
+             }
+             it->prev = new_node;
+             break;
+         }
+         // prev = it;
+         it = it->next;
+     }
+     if(data<= it->data){
+         new_node->prev = it->prev;
+         new_node->next = it;
+         if(it->prev != nullptr){
+             it->prev->next = new_node;
+         }
+     }
+     else{
+         new_node->prev = it;
+         it->next = new_node;
+     }
+     return head;
+ }
 
 int main()
 {
