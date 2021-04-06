@@ -73,47 +73,48 @@ void free_doubly_linked_list(DoublyLinkedListNode* node) {
  *
  */
  DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* head, int data) {
-   DoublyLinkedListNode *it = head;
-  // DoublyLinkedListNode *prev = head;
-  DoublyLinkedListNode *new_node = new DoublyLinkedListNode(data);
-  if(head == nullptr){
-      head = new_node;
-  }
-  if(data <= it->data){
-      new_node->prev = it->prev;
-      new_node->next = it;
-      it->prev = new_node;
-      head = new_node;
-      return head;
-  }
-  else{
-      while(it->next!= nullptr){
-          if(data <= it->data){
-              new_node->prev = it->prev;
-              new_node->next = it;
-              if(it->prev != nullptr){
-                  it->prev->next = new_node;
-              }
-              it->prev = new_node;
-              break;
-          }
-          // prev = it;
-          it = it->next;
-      }
-      if(data<= it->data){
-          new_node->prev = it->prev;
-          new_node->next = it;
-          if(it->prev != nullptr){
-              it->prev->next = new_node;
-          }
-      }
-      else{
-          new_node->prev = it;
-          it->next = new_node;
-      }
-  }
-  return head;
- }
+    DoublyLinkedListNode *it = head;
+    DoublyLinkedListNode *new_node = new DoublyLinkedListNode(data);
+    // In case the list is empty
+    if(head == nullptr){
+        head = new_node;
+    }
+    // If the new data is the smallest
+    else if(data<=it->data){
+        new_node->prev = it->prev;
+        new_node->next = it;
+        it->prev = new_node;
+        head = new_node;
+    }
+    else{
+        // if the new data comes somewhere in betn
+        while(it->next!=nullptr){
+            if(data<=it->data){
+                new_node->next = it;
+                new_node->prev = it->prev;
+                if(it->prev!= nullptr){
+                    it->prev->next = new_node;
+                }
+                it->prev = new_node;
+                return head;
+            }
+            it = it->next;
+        }
+        // If the new data is 2nd largest
+        if(data<= it->data){
+            new_node->next = it;
+            new_node->prev = it->prev;
+            it->prev->next = new_node;
+            it->prev = new_node;
+        }
+        // If the new data is largest
+        else{
+            it->next = new_node;
+            new_node->prev = it;
+        }
+    }
+    return head;
+}
 
 int main()
 {
