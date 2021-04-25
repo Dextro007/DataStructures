@@ -1,20 +1,12 @@
 #include<iostream>
+#include<utility>
+#include<map>
 
 using namespace std;
 int main(){
-  unsigned short int a;
-  unsigned short int b;
-  unsigned short int c;
-  a = 65535;
-  b = 1;
-  c = 1;
-  a &= (~b);
-  a &= (~c);
-  cout<<"a: "<<a<<"\n";
-  cout<<"b: "<<b<<"\n";
-  cout<<"c: "<<c<<"\n";
-  cout<<"~ b: "<<(unsigned short int)~b<<"\n";
-  cout<<"~ c: "<<(unsigned short int)~c<<"\n";
-  cout<<"a&b "<<(a&b)<<"\n";
+  map<int,pair<int, int>> m;
+  m[0] = make_pair(2,3);
+  m[1] = make_pair(1,4);
+  cout<<m[0].first;  
   return 0;
 }
