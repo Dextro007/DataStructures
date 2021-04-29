@@ -93,28 +93,34 @@ typedef struct node {
 
 
 void decode_huff(node * root, string s) {
-    if(root->right->data)
-        cout<<root->right->freq;
-}
-
-int main() {
-
-    string s;
-    std::cin >> s;
-
-    node * tree = huffman_hidden(s);
-    string code = "";
-    map<char, string>mp;
-
-    print_codes_hidden(tree, code, mp);
-
-    string coded;
-
-    for( int i = 0; i < s.length(); i++ ) {
-        coded += mp[s[i]];
+    queue<char> q;
+    char curr;
+    string::iterator it;
+    node *currentNode = nullptr;
+    for(it = s.begin(); it!= s.end(); it++){
+      q.push(*it);
     }
-
-    decode_huff(tree,coded);
-
-    return 0;
+    while(!q.empty()){
+      curr = q.front();
+      currentNode = root;
+      while(currentNode != nullptr){
+        if(curr == '1'){
+          currentNode = currentNode->right;
+        }
+        else if(curr == '0'){
+          currentNode = currentNode->left;
+        }
+        else{}
+        q.pop();
+        if(currentNode->data){
+          cout<<currentNode->data;
+          break;
+        }
+        else{
+          curr  = q.front();
+          continue;
+        }
+      }
+    }
 }
+int main() {
