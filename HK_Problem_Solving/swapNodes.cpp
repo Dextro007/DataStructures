@@ -16,10 +16,11 @@ vector<string> split(const string &);
  */
 
 vector<vector<int>> swapNodes(vector<vector<int>> indexes, vector<int> queries) {
-    vector<vector<int>> ret;
+    vector<vector<int>> ret_val;
     if(indexes.size() == 0){
-        return ret;
+        return ret_val;
     }
+    return ret_val;
 }
 
 int main()
@@ -99,7 +100,7 @@ string ltrim(const string &str) {
 }
 
 string rtrim(const string &str) {
-    string s(str);p
+    string s(str);
 
     s.erase(
         find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
