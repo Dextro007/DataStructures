@@ -16,10 +16,11 @@ vector<string> split(const string &);
  */
 
 vector<vector<int>> swapNodes(vector<vector<int>> indexes, vector<int> queries) {
-  vector<vector<int>> ret;
-  if(indexes.size() == 0){
-    return ret;
-  }
+    vector<vector<int>> ret_val;
+    if(indexes.size() == 0){
+        return ret_val;
+    }
+    return ret_val;
 }
 
 int main()
