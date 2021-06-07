@@ -15,13 +15,12 @@ vector<string> split(const string &);
  *  2. INTEGER_ARRAY queries
  */
 
-vector<vector<int>> swapNodes(vector<vector<int>> indexes, vector<int> queries) {
-    vector<vector<int>> ret_val;
-    if(indexes.size() == 0){
-        return ret_val;
-    }
-    return ret_val;
-}
+ vector<vector<int>> swapNodes(vector<vector<int>> indexes, vector<int> queries) {
+     vector<int>::iterator it;
+     for(it = queries.begin(); it != queries.end(); it++){
+       cout<<*it;
+     }
+ }
 
 int main()
 {
