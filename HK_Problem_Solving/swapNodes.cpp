@@ -18,7 +18,7 @@ vector<string> split(const string &);
  vector<vector<int>> swapNodes(vector<vector<int>> indexes, vector<int> queries) {
      vector<int>::iterator it;
      for(it = queries.begin(); it != queries.end(); it++){
-       cout<<*it;
+
      }
  }
 
