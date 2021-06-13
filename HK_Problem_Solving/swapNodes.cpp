@@ -14,13 +14,19 @@ vector<string> split(const string &);
  *  1. 2D_INTEGER_ARRAY indexes
  *  2. INTEGER_ARRAY queries
  */
+vector<vector<int>> swapNodes(vector<vector<int>> indexes, vector<int> queries) {
+    vector<vector<int>> retVal;
+    vector<vector<int>>::iterator row;
+    vector<int> col;
+    for(int row = 0; row<indexes.size(); row++){
+        for(int col = 0; col<indexes[row].size(); col++){
+            cout<<indexes[row][col]<<" ";
+        }
+        cout<<"\n";
+    }
+    return retVal;
 
- vector<vector<int>> swapNodes(vector<vector<int>> indexes, vector<int> queries) {
-     vector<int>::iterator it;
-     for(it = queries.begin(); it != queries.end(); it++){
-
-     }
- }
+}
 
 int main()
 {
