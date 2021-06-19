@@ -18,11 +18,18 @@ vector<vector<int>> swapNodes(vector<vector<int>> indexes, vector<int> queries) 
     vector<vector<int>> retVal;
     vector<vector<int>>::iterator row;
     vector<int> col;
+    int k;
     for(int row = 0; row<indexes.size(); row++){
         for(int col = 0; col<indexes[row].size(); col++){
             cout<<indexes[row][col]<<" ";
         }
         cout<<"\n";
+    }
+    for(int it =0; it<queries.size(); it++){
+         k = queries[it];
+         for(int i=k; i<indexes.size(); i+=k){
+
+         }
     }
     return retVal;
 
