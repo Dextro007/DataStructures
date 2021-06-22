@@ -61,6 +61,9 @@ void topView(Node * root) {
         curr = q.front().first;
         dist = q.front().second;
         q.pop();
+        /* count returns 1 if container contains
+        an element whose key value is dist else 0
+        */
         if(m.count(dist) == 0){
             m[dist] = curr->data;
         }
