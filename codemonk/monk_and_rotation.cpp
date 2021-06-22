@@ -13,8 +13,8 @@ int main(){
   for(int i = 0; i<t; i++){
     cin>>n;
     cin>>rotations;
-    long *arr = new int[n];
-    long *new_array = new int[n];
+    long *arr = new long[n];
+    long *new_array = new long[n];
     for(int j = 0; j<n; j++){
       cin>>arr[j];
     }
