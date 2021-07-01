@@ -28,7 +28,8 @@ vector<vector<int>> swapNodes(vector<vector<int>> indexes, vector<int> queries) 
     for(int it =0; it<queries.size(); it++){
          k = queries[it];
          for(int i=k; i<indexes.size(); i+=k){
-
+           // TODO: remove the below
+           cout<<"i";
          }
     }
     return retVal;
