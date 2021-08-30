@@ -3,43 +3,19 @@
 
 // static unsigned int counter = 0;
 
-void test_func(){
-  short signed int a = 12;
-  printf("%u", (unsigned short int)(~a+1));
+void test_func(int *arr, int size){
+  for(int i = 0; i<size; i++){
+    arr[i] = i+1;
+  }
+  return;
 }
 
 int main(){
-  test_func();
+  int *ptr = NULL;
+
+  test_func(ptr, 5);
+  for(int i=0; i<5; i++){
+    printf("%d", ptr[i]);
+  }
   return 0;
 }
- /*
- 14
- 16
- 32
- 33
- 37
- 38
- 41
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 58
- 59
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- */
