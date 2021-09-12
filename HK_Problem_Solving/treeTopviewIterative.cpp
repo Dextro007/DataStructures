@@ -57,6 +57,8 @@ void topView(Node * root) {
     Node* curr = nullptr;
     int dist = 0;
     q.push({root, 0});
+    /* since we already traversing the tree level wise
+    not need to take care of level. But in recursive that is alos handled*/
     while(!q.empty()){
         curr = q.front().first;
         dist = q.front().second;

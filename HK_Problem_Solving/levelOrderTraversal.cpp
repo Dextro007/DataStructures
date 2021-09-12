@@ -51,6 +51,8 @@ void levelOrder(Node * root) {
     q.push(root);
     Node* curr = nullptr;
     // int dist = 0;
+    /* queue follows FIFO so node are processed in level wise
+    from left to right*/
     while(!q.empty()){
         curr = q.front();
         // dist = q.front().second;
