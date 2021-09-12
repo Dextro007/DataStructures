@@ -46,41 +46,7 @@ void printMedian(vector<int> vect){
 
 }
 void median(vector<char> s,vector<int> X) {
-    vector<char>::iterator its;
-    unsigned short size = 0;
-    vector<int>vect;
-    unsigned int med = 0;
-    for(int i = 0; i<s.size();i++){
-        if(s[i] == 'r'){
-            if(vect.size() == 0){
-                cout<<"Wrong!\n";
-            }
-            else{
-                if(find(vect.begin(), vect.end(), X[i]) != vect.end()){
-                    vect.erase(find(vect.begin(), vect.end(), X[i]));
-                    // debug
-                    // printVect(vect);
-                    // cout<<vect.size()<<" size\n";
-                    printMedian(vect);
-                }
-                else{
-
-                    cout<<"Wrong!\n";
-                }
-            }
-        }
-        else if(s[i] == 'a'){
-            vect.push_back(X[i]);
-            sort(vect.begin(),vect.end());
-            //debug
-            // printVect(vect);
-            printMedian(vect);
-        }
-        else{
-            cout<<"Wrong!\n";
-        }
-    }
-    return;
+// using balanced tree approach
 }
 int main(void){
 
