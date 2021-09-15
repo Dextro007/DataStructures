@@ -1,70 +1,100 @@
-#include <map>
-#include <set>
-#include <list>
-#include <cmath>
-#include <ctime>
-#include <deque>
-#include <queue>
-#include <stack>
-#include <bitset>
-#include <cstdio>
-#include <limits>
+/* the algo was same just use upeper_bound and lower_lound
+to  avoid using sort function every time
+*/
 #include <vector>
-#include <cstdlib>
-#include <numeric>
-#include <sstream>
 #include <iostream>
 #include <algorithm>
-using namespace std;
-/* Head ends here */
 
-//debug
-void printVect(vector<int>vec){
-    for (int i=0; i<vec.size(); i++){
-        cout<<vec[i]<<" ";
-    }
-    cout<<"\n";
+using namespace std;
+
+void insertNum( vector< int >& numbers , int a )
+{
+    auto iter = std::upper_bound( numbers.begin() , numbers.end() , a );
+    numbers.insert( iter , a );
 }
 
-void printMedian(vector<int> vect){
-    int midVal;
-    float mid;
-    if(vect.size() == 0){
-        cout<<"Wrong!";
-    }else{
-        if(vect.size()%2 != 0){
-        cout<<vect[floor(vect.size()/2)]<<"\n";
-     }
-        else{
-            midVal = vect.size()/2;
-            // cout<<"mid "<<midVal<<"\n";
-            // float mid = float(vect[midVal - 1] + vect[midVal]);
-            // cout<<mid/2<< "\n";
-            cout<<float(float(vect[midVal - 1] + vect[midVal])/2)<<"\n";
+bool remove( vector< int >& numbers , int a )
+{
+    auto iter = std::lower_bound( numbers.begin() , numbers.end() , a );
+    if( ( iter == numbers.end() ) || ( *iter != a ) )
+    {
+        return false;
+    }
+    else
+    {
+        numbers.erase( iter );
+        return true;
+    }
+}
+
+void print_median( vector< int > const& numbers )
+{
+    if( numbers.empty() )
+    {
+        cout << "Wrong!" << endl;
+    }
+    else
+    {
+        if( ( numbers.size() % 2 ) == 0 )
+        {
+            int i = numbers.size() / 2;
+            double x = 0.5 * ( double( numbers[ i -1 ] ) + double( numbers[ i ] ) );
+            cout << x << endl;
+        }
+        else
+        {
+            cout << numbers[ numbers.size() / 2 ] << endl;
         }
     }
-
 }
-void median(vector<char> s,vector<int> X) {
-// using balanced tree approach
+
+void print_numbers( vector< int > const& numbers )
+{
+    for( auto n : numbers )
+        cout << n << " ";
+    cout << endl << endl;
 }
-int main(void){
 
-//Helpers for input and output
+void median( vector<char> s , vector<int> X )
+{
+    vector< int > numbers;
+    for( int i=0 ; i<s.size() ; ++i )
+    {
+        switch( s[i] )
+        {
+            case 'a':
+                insertNum( numbers , X[i] );
+                print_median( numbers );
 
-	int N;
-	cin >> N;
+                break;
+            case 'r':
+                if( remove( numbers , X[i] ) )
+                    print_median( numbers );
+                else
+                    cout << "Wrong!" << endl;
+                break;
+        }
 
-	vector<char> s;
+    }
+}
+int main(void)
+{
+    cout.precision( 14 );
+
+    int N;
+    cin >> N;
+
+    vector<char> s;
     vector<int> X;
-	char temp;
+    char temp;
     int tempint;
-	for(int i = 0; i < N; i++){
-		cin >> temp >> tempint;
+    for(int i = 0; i < N; i++)
+    {
+        cin >> temp >> tempint;
         s.push_back(temp);
         X.push_back(tempint);
-	}
+    }
 
-	median(s,X);
-	return 0;
+    median(s,X);
+    return 0;
 }
