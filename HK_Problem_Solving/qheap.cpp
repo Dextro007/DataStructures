@@ -59,7 +59,7 @@ void swap(int *x, int *y){
   *x = *y;
   *y = temp;
 }
-// constructor created
+// constructor create
 minHeap::minHeap(int cap){
   size = 0;
   capacity = cap;
@@ -116,6 +116,18 @@ void minHeap::decreaseKey(int i, int newVal){
 void minHeap::deleteKey(int i){
   decreaseKey(i, INT_MIN);
   extractMin();
+}
+void minHeap::insertKey(int i){
+  if(size == capacity){
+    cout<<"Overflow, Can't Insert"<<"\n";
+    return;
+  }
+  heapArr[size++] = i;
+  int node = size-1;
+  while(node>0 && heapArr[parent(node)] > heapArr[node]){
+    swap(&heapArr[parent(node)], &heapArr[node]);
+    node = parent(node);
+  }
 }
 int main()
 {
