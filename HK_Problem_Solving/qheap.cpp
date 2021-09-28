@@ -13,9 +13,9 @@ A Binary Heap is a Complete Binary Tree. A binary heap is typically represented 
 
 The root element will be at Arr[0].
 Below table shows indexes of other nodes for the ith node, i.e., Arr[i]:
-Arr[(i-1)/2]	Returns the parent node
-Arr[(2*i)+1]	Returns the left child node
-Arr[(2*i)+2]	Returns the right child node
+Arr[(i-1)/2]    Returns the parent node
+Arr[(2*i)+1]    Returns the left child node
+Arr[(2*i)+2]    Returns the right child node
 */
 #include<iostream>
 #include<climits>
@@ -47,9 +47,16 @@ public:
   void decreaseKey(int i, int newVal);
   void deleteKey(int i);
   void insertKey(int i);
+  void printHeap(){
+    for(int i = 0; i<size; i++){
+      cout<<heapArr[i]<<" ";
+    }
+    cout<<"\n";
+  }
   int getMin(){
     return heapArr[0];
   }
+  int getIndex(int element);
 };
 
 // to swap the values at 2 array indexes
@@ -59,7 +66,7 @@ void swap(int *x, int *y){
   *x = *y;
   *y = temp;
 }
-// constructor created
+// constructor create
 minHeap::minHeap(int cap){
   size = 0;
   capacity = cap;
@@ -70,7 +77,7 @@ minHeap::minHeap(int cap){
 // and then heapify the heap from 0th element
 int minHeap::extractMin(){
   // Incas the size is 0
-  if(size == 0){
+  if(size <= 0){
     return INT_MAX;
   }
   // Incase the size is 1
@@ -81,9 +88,11 @@ int minHeap::extractMin(){
   int rootData = heapArr[0];
   // replace the root data with last element
   heapArr[0] = heapArr[size-1];
+  // cout<<"\n extmin: "<< heapArr[0]<< "\n";
   //decrease the size
   size--;
   // start heapifying from root element
+  // printHeap();
   minHeapify(0);
   return rootData;
 }
@@ -92,14 +101,15 @@ void minHeap::minHeapify(int i){
   int lval = left(i);
   int rval = right(i);
   int smallest = i;
-  if(i<size && heapArr[lval]<heapArr[i]){
+  if(lval < size && heapArr[lval]<heapArr[i]){
     smallest = lval;
   }
-  if(i<size && heapArr[rval]<heapArr[i]){
+  if(rval < size && heapArr[rval]<heapArr[smallest]){
     smallest = rval;
   }
   if(smallest != i){
     swap(&heapArr[i], &heapArr[smallest]);
+    // printHeap();
     minHeapify(smallest);
   }
 }
@@ -107,7 +117,7 @@ void minHeap::minHeapify(int i){
 // keeps swapping until it reaches the root
 void minHeap::decreaseKey(int i, int newVal){
   heapArr[i] = newVal;
-  while(i>0 && heapArr[parent(i)] < heapArr[i]){
+  while(i!=0 && heapArr[parent(i)] > heapArr[i]){
     swap(&heapArr[parent(i)], &heapArr[i]);
     i = parent(i);
   }
@@ -117,9 +127,52 @@ void minHeap::deleteKey(int i){
   decreaseKey(i, INT_MIN);
   extractMin();
 }
+void minHeap::insertKey(int i){
+  if(size == capacity){
+    cout<<"Overflow, Can't Insert"<<"\n";
+    return;
+  }
+  heapArr[size++] = i;
+  int node = size-1;
+  while(node!=0 && heapArr[parent(node)] > heapArr[node]){
+    swap(&heapArr[parent(node)], &heapArr[node]);
+    node = parent(node);
+  }
+}
+// to get the index of the heap elements
+int minHeap::getIndex(int element){
+  for(int i=0; i<size; i++){
+    if(heapArr[i] == element){
+      return i;
+    }
+  }
+  return -1;
+}
+
 int main()
 {
-  int n;
+  int  q,val, n,index;
   cin>>n;
+  minHeap h(n);
+  for( int i = 0; i<n; i++){
+    cin>>q;
+    switch(q){
+      case 1:
+        cin>>val;
+        h.insertKey(val);
+      break;
+      case 2:
+        cin>>val;
+        index = h.getIndex(val);
+        if(index>=0)
+          h.deleteKey(index);
+      break;
+      case 3:
+      cout<<h.getMin()<<"\n";
+      break;
+      default:
+      cout<<"Invalid Input";
+    }
+  }
   return 0;
 }
