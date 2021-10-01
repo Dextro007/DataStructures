@@ -7,26 +7,31 @@ Soln :
 */
 int cookies(int k, vector<int> A) {
     int min1, min2,cnt = 0,retVal;
-    make_heap(A.begin(), A.end());
-    sort_heap(A.begin(), A.end());
-    vector<int>::iterator upper;
+    make_heap(A.begin(), A.end(),greater<int>());
     while(A.front()<k && A.size()>1){
-        // for(auto &it : A){
+
+        cout<<"\n";
+        min1 = A.front();
+        pop_heap(A.begin(), A.end(), greater<int>());
+        A.pop_back();
+        min2 = A.front();
+        pop_heap(A.begin(), A.end(), greater<int>());
+        A.pop_back();
+        A.push_back(min1+(2*min2));
+        push_heap(A.begin(), A.end(), greater<int>());
+        cnt++;
+        // for(auto &it:A){
         //     cout<<it<<" ";
         // }
-        cout<<"\n";
-        min1 = *(A.begin());
-        min2 = *(A.begin()+1);
-        A.erase(A.begin(),A.begin()+2);
-        upper = upper_bound(A.begin(), A.end(), (min1+2*min2));
-        A.insert(upper, (min1+2*min2));
-        cnt++;
     }
-    if(cnt>0){
+    if(cnt<=0 && A.front()>k){
         retVal = cnt;
     }
-    else{
+    else if(cnt <=0 || A.front()<k){
         retVal = -1;
+    }
+    else{
+        retVal = cnt;
     }
     return retVal;
 }
